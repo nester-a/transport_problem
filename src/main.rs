@@ -2,15 +2,15 @@ use std::collections::VecDeque;
 
 // Структура для представления транспортной задачи
 struct TransportProblem {
-    supplies: Vec<i32>,   // Запасы (a1, a2, a3)
-    demands: Vec<i32>,    // Потребности (b1, b2, b3, b4, b5)
-    costs: Vec<Vec<i32>>, // Матрица стоимостей
+    supplies: Vec<i32>,  
+    demands: Vec<i32>,    
+    costs: Vec<Vec<i32>>, 
 }
 
 // Структура для хранения плана перевозок
 struct TransportPlan {
-    allocations: Vec<Vec<i32>>, // Матрица перевозок x[i][j]
-    total_cost: i32,            // Общая стоимость
+    allocations: Vec<Vec<i32>>, 
+    total_cost: i32,            
 }
 
 impl TransportProblem {
@@ -26,7 +26,7 @@ impl TransportProblem {
         }
     }
 
-    // Проверка баланса
+    
     fn is_balanced(&self) -> bool {
         let total_supply: i32 = self.supplies.iter().sum();
         let total_demand: i32 = self.demands.iter().sum();
@@ -67,7 +67,7 @@ impl TransportProblem {
         }
     }
 
-    // Вычисление общей стоимости
+    
     fn calculate_total_cost(&self, allocations: &[Vec<i32>]) -> i32 {
         let mut total = 0;
         for i in 0..allocations.len() {
@@ -78,7 +78,7 @@ impl TransportProblem {
         total
     }
 
-    // Оптимизация методом потенциалов (упрощенная версия)
+    // Оптимизация методом потенциалов
     fn optimize_by_potentials(&self, mut plan: TransportPlan) -> TransportPlan {
         let m = self.supplies.len();
         let n = self.demands.len();
